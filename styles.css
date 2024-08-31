@@ -114,6 +114,7 @@ body {
     justify-content: center;
     align-items: center;
     border: 1px solid black;
+    font-weight: 300;
     cursor: pointer;
     color: var(--primary-clr)
 }
@@ -147,19 +148,54 @@ body {
 
 .calendar .days .today{
     font-size: 2rem;
-    color: blue;
+    color: black;
 }
 
 .calendar .days .event{
     position: relative;
 }
 
-.calendar .days .event::after{
+.calendar .days .event:not(.active, .today):after{
     content: "";
     position: absolute;
+    bottom: 10%;
     top:60%;
     width: 33%;
     height: 6px;
     border-radius: 10px;
     background-color: var(--primary-clr);
 }
+
+.calendar .days .event::after{
+    content: "";
+    position: absolute;
+    bottom: 10%;
+    top:60%;
+    width: 46%;
+    height: 6px;
+    border-radius: 10px;
+    background-color: var(--primary-clr);
+}
+
+.calendar .days .day:hover.event::after{
+    background-color: #fff;
+}
+
+.calendar .days .active.event::after{
+    background-color: #fff;
+    bottom: 20%;
+}
+
+.calendar .days .active.event{
+    padding-bottom: 15px;
+}
+
+.calendar .days .today.event::after{
+    background-color: black;
+    bottom:20%;
+}
+
+.calendar .days .today.event{
+    padding-bottom: 15px;
+}
+
